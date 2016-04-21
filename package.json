@@ -1,0 +1,24 @@
+{
+  "name": "api.ottawa.ski",
+  "version": "1.0.0",
+  "description": "API for ottawa.ski",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avoidwork/api.ottawa.ski.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "gateway"
+  ],
+  "author": "Jason Mulligan <jason@ottawa.ski>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avoidwork/api.ottawa.ski/issues"
+  },
+  "homepage": "https://github.com/avoidwork/api.ottawa.ski#readme"
+}
