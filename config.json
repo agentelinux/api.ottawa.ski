@@ -1,0 +1,39 @@
+{
+  "compress": false,
+  "headers": {
+    "cache-control": "private max-age=1800"
+  },
+  "json": 0,
+  "logging": {
+    "level": "info",
+    "enabled": true,
+    "stack": false
+  },
+  "security": {
+    "key": "x-csrf-token",
+    "secret": "halochocho",
+    "csrf": true,
+    "csp": null,
+    "xframe": "SAMEORIGIN",
+    "p3p": "",
+    "hsts": {
+      "maxAge": 1800,
+      "includeSubDomains": true,
+      "preload": true
+    },
+    "xssProtection": true
+  },
+  "maxBytes": 1048576,
+  "port": 8000,
+  "routes": {},
+  "session" : {
+    "secret": "halochocho",
+    "store": "memory"
+  },
+  "rate": {
+    "enabled": true,
+    "limit": 10,
+    "reset": 1800
+  },
+  "title": "Ottawa.ski API"
+}
