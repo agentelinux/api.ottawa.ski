@@ -5,7 +5,7 @@ server {
 
 server {
     listen 443 default_server;
-    server_name ottawa.ski;
+    server_name www.ottawa.ski;
 
     ssl_certificate           /opt/ssl/www.pem;
     ssl_certificate_key       /opt/ssl/www.key;
@@ -28,7 +28,7 @@ server {
 
 server {
     listen 443;
-    server_name www.ottawa.ski;
+    server_name ottawa.ski;
 
     ssl_certificate           /opt/ssl/www.pem;
     ssl_certificate_key       /opt/ssl/www.key;
@@ -39,5 +39,5 @@ server {
     ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
     ssl_prefer_server_ciphers on;
 
-    return 301 https://ottawa.ski$request_uri;
+    return 301 https://www.ottawa.ski$request_uri;
 }
