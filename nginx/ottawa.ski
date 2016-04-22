@@ -1,5 +1,5 @@
 server {
-    listen 443;
+    listen 443 backlog 4096;
     server_name ottawa.ski;
 
     ssl_certificate           /etc/nginx/cert.crt;

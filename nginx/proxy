@@ -1,10 +1,10 @@
 server {
-    listen 80;
+    listen 80 backlog 4096;
     return 301 https://$host$request_uri;
 }
 
 server {
-    listen 443;
+    listen 443 backlog 4096;
     server_name api.ottawa.ski;
 
     ssl_certificate           /opt/ssl/api.pem;
