@@ -1,4 +1,9 @@
 server {
+    listen 80;
+    return 301 https://$host$request_uri;
+}
+
+server {
     listen 443;
     server_name ottawa.ski;
 
@@ -12,7 +17,7 @@ server {
     ssl_prefer_server_ciphers on;
 
     access_log            /var/log/nginx/www.access.log;
-    error_log            /var/log/nginx/www.error.log;
+    error_log             /var/log/nginx/www.error.log;
 
     root /var/www/ottawa.ski;
 
