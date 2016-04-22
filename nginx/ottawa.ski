@@ -14,7 +14,7 @@ server {
     access_log            /var/log/nginx/web.access.log;
     error_log            /var/log/nginx/web.error.log;
 
-    root /www/ottawa.ski;
+    root /var/www/ottawa.ski;
 
     location /assets/ {
         autoindex on;
