@@ -2,8 +2,8 @@ server {
     listen 443;
     server_name ottawa.ski;
 
-    ssl_certificate           /etc/nginx/cert.crt;
-    ssl_certificate_key       /etc/nginx/cert.key;
+    ssl_certificate           /opt/ssl/www.pem;
+    ssl_certificate_key       /opt/ssl/www.key;
 
     ssl on;
     ssl_session_cache  builtin:1000  shared:SSL:10m;
@@ -11,8 +11,8 @@ server {
     ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
     ssl_prefer_server_ciphers on;
 
-    access_log            /var/log/nginx/web.access.log;
-    error_log            /var/log/nginx/web.error.log;
+    access_log            /var/log/nginx/www.access.log;
+    error_log            /var/log/nginx/www.error.log;
 
     root /var/www/ottawa.ski;
 
