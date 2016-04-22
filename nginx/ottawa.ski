@@ -4,6 +4,11 @@ server {
 }
 
 server {
+    server_name www.ottawa.ski;
+    return 301 $scheme://ottawa.ski$request_uri;
+}
+
+server {
     listen 443;
     server_name ottawa.ski;
 
