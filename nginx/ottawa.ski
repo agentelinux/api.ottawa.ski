@@ -1,6 +1,22 @@
 server {
-    listen 80 default_server;
+    listen 80;
     return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name ottawa.ski;
+
+    ssl_certificate           /opt/ssl/www.pem;
+    ssl_certificate_key       /opt/ssl/www.key;
+
+    ssl on;
+    ssl_session_cache  builtin:1000  shared:SSL:10m;
+    ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
+    ssl_prefer_server_ciphers on;
+
+    return 301 https://www.ottawa.ski$request_uri;
 }
 
 server {
@@ -24,20 +40,4 @@ server {
     location /assets/ {
         autoindex on;
     }
-}
-
-server {
-    listen 443;
-    server_name ottawa.ski;
-
-    ssl_certificate           /opt/ssl/www.pem;
-    ssl_certificate_key       /opt/ssl/www.key;
-
-    ssl on;
-    ssl_session_cache  builtin:1000  shared:SSL:10m;
-    ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4;
-    ssl_prefer_server_ciphers on;
-
-    return 301 https://www.ottawa.ski$request_uri;
 }
