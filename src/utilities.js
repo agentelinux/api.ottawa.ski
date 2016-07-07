@@ -50,7 +50,7 @@ fs.readdir(fpCities, (e, items) => {
                     files.forEach(file => {
                         map.set(file[0], null);
                         read(map.get(file[0]), file[0], file[1]);
-                        watch(file[1], () => {
+                        fs.watch(file[1], () => {
                             read(map.get(file[0]), file[0], file[1]);
                         });
                     });
