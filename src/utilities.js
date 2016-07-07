@@ -26,7 +26,7 @@ function read (map, key, file) {
     });
 }
 
-fs.readDir(fpCities, (e, items) => {
+fs.readdir(fpCities, (e, items) => {
     items.forEach(i => {
         let fpPath = path.join(fpCities, i);
 
