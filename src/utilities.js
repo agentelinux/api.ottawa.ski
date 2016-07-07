@@ -80,7 +80,14 @@ function sendCities (req, res) {
 }
 
 function soon (req, res) {
-    res.send('Coming Soon');
+    const city = req.params.city,
+        map = condition.has(city);
+
+    if (map) {
+        res.send('Coming Soon');
+    } else {
+        res.error(404, new Error(404));
+    }
 }
 
 module.exports = {
