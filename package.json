@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/avoidwork/api.ottawa.ski#readme",
   "dependencies": {
-    "tenso": "~4.0.1",
+    "tenso": "~4.0.2",
     "tiny-merge": "^1.0.0"
   }
 }

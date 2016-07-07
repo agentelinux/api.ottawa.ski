@@ -18,7 +18,6 @@ function read (map, key, file) {
                 if (!e) {
                     try {
                         data = JSON.parse(arg);
-                        console.log(data);
                         map.set(key, data);
                     } catch (e) {
                         console.error(e);
