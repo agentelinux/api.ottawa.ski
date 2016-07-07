@@ -6,9 +6,12 @@ const path = require('path'),
 const routes = {
     'get': {
         '/': ['conditions', 'news', 'reviews'],
-        '/(conditions|news|reviews)': (req, res) => {
-            res.send('Coming Soon');
-        }
+        '/conditions': util.conditions,
+        '/conditions/:location': util.soon,
+        '/news': util.soon,
+        '/news/:location': util.soon,
+        '/reviews': util.soon,
+        '/reviews/:location': util.soon
     }
 };
 

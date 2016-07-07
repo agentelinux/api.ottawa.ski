@@ -1,8 +1,38 @@
 'use strict';
 
 const path = require('path'),
-    config = require(path.join(__dirname, 'config.js'));
-    regex = require(path.join(__dirname, 'regex.js'));
+    config = require(path.join(__dirname, 'config.js')),
+    regex = require(path.join(__dirname, 'regex.js')),
+    fs = require('fs'),
+    fpCities = path.resolve('/opt/data'),
+    watchers = new Map();
+
+let cities = [];
+
+fs.readDir(fpCities, (e, items) => {
+    cities.length = 0;
+    items.forEach(i => {
+        cities.push(i);
+        watch(i.replace(/\..*$/, ''), i);
+    });
+});
+
+function watch (key, file) {
+    if (!watchers.has(key)) {
+        watchers.set(key, fs.watch(path.join(fpCities, file), () => {
+            updateConditions(key);
+            this.unwatch(uri, fpath);
+        }));
+
+        this.log("Created watcher for " + fpath + " (" + uri + ")", "debug");
+    }
+
+    return this;
+}
+
+function conditions (req, res) {
+    res.send(cities);
+}
 
 function register (req, res) {
     let args;
@@ -32,6 +62,12 @@ function register (req, res) {
     }
 }
 
+function soon (req, res) {
+    res.send('Coming Soon');
+}
+
 module.exports = {
-    register: register
+    conditions: conditions,
+    register: register,
+    soon: soon
 };
