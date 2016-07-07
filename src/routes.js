@@ -6,11 +6,11 @@ const path = require('path'),
 const routes = {
     'get': {
         '/': ['weather', 'news', 'reviews'],
-        '/news': util.soon,
+        '/news': util.sendCities,
         '/news/:city': util.soon,
-        '/reviews': util.soon,
+        '/reviews': util.sendCities,
         '/reviews/:city': util.soon,
-        '/weather': util.weatherCities,
+        '/weather': util.sendCities,
         '/weather/:city': util.weather
     }
 };

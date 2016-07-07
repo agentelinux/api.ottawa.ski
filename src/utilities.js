@@ -75,7 +75,7 @@ function weather (req, res) {
     }
 }
 
-function weatherCities (req, res) {
+function sendCities (req, res) {
     res.send(cities);
 }
 
@@ -84,7 +84,7 @@ function soon (req, res) {
 }
 
 module.exports = {
+    sendCities: sendCities,
     soon: soon,
-    weather: weather,
-    weatherCities: weatherCities
+    weather: weather
 };
