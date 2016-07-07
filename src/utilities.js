@@ -8,8 +8,10 @@ const path = require('path'),
 let cities = [];
 
 function read (map, key, file) {
+    console.log('Checking if file exists:', file);
     fs.exists(file, exists => {
         if (exists) {
+            console.log(file, 'exists');
             fs.readFile(file, (e, arg) => {
                 let data;
 
@@ -22,6 +24,8 @@ function read (map, key, file) {
                     }
                 }
             });
+        } else {
+            console.error(file, 'doesn\'t exist');
         }
     });
 }
