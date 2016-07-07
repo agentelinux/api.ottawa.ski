@@ -32,8 +32,8 @@
   },
   "rate": {
     "enabled": true,
-    "limit": 10,
-    "reset": 1800
+    "limit": 50,
+    "reset": 180
   },
   "uid": 33,
   "title": "Ottawa.ski API"
