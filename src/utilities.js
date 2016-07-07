@@ -68,9 +68,6 @@ function weather (req, res) {
     const city = req.params.city,
         map = condition.get(city);
 
-    console.log(city);
-    console.log(condition.size);
-
     if (map) {
         res.send({warnings: map.get('warnings'), weather: map.get('weather')});
     } else {
