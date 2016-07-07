@@ -26,8 +26,10 @@ function read (map, key, file) {
     });
 }
 
+console.log('Reading', fpCities);
+
 fs.readdir(fpCities, (e, items) => {
-    if (!e) {
+    if (e) {
         console.error(e);
         process.exit(1);
     } else {
