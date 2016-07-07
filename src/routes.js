@@ -11,7 +11,7 @@ const routes = {
         '/reviews': util.soon,
         '/reviews/:location': util.soon,
         '/weather': util.weatherCities,
-        '/weather/:location': util.weather
+        '/weather/:city': util.weather
     }
 };
 
