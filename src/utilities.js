@@ -5,61 +5,64 @@ const path = require('path'),
     regex = require(path.join(__dirname, 'regex.js')),
     fs = require('fs'),
     fpCities = path.resolve('/opt/data'),
-    watchers = new Map();
+    condition = new Map();
 
 let cities = [];
 
+function read (map, key, file) {
+    fs.readFile(file, (e, arg) => {
+        let data;
+
+        if (!e) {
+            try {
+                data = JSON.parse(arg);
+                map.set(key, data);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+    });
+}
+
 fs.readDir(fpCities, (e, items) => {
-    cities.length = 0;
     items.forEach(i => {
-        cities.push(i);
-        watch(i.replace(/\..*$/, ''), i);
+        let fpPath = path.join(fpCities, i);
+
+        fs.stat(fpPath, (e, stat) => {
+            if (stat.isDirectory()) {
+                let files = [
+                    ['warnings', path.join(fpPath, 'warnings.json')],
+                    ['weather', path.join(fpPath, 'weather.json')]
+                ], map;
+
+                cities.push(i);
+                conditions.set(i, new Map());
+                map = conditions.get(i);
+
+                files.forEach(file => {
+                    map.set(file[0], null);
+                    read(map.get(file[0]), file[0], file[1]);
+                    watch(file[1], () => {
+                        read(map.get(file[0]), file[0], file[1]);
+                    });
+                });
+            }
+        });
     });
 });
 
-function watch (key, file) {
-    if (!watchers.has(key)) {
-        watchers.set(key, fs.watch(path.join(fpCities, file), () => {
-            updateConditions(key);
-            this.unwatch(uri, fpath);
-        }));
+function weather (req, res) {
+    const map = condition.get(req.param.location);
 
-        this.log("Created watcher for " + fpath + " (" + uri + ")", "debug");
-    }
-
-    return this;
-}
-
-function conditions (req, res) {
-    res.send(cities);
-}
-
-function register (req, res) {
-    let args;
-
-    if (req.isAuthenticated()) {
-        res.error(400, config.error.already_authenticated);
-    } else if (req.body !== undefined) {
-        args = load('users', req.body);
-
-        if (stores.users.indexes.get('email').has(args.email)) {
-            res.error(400, config.error.email_used);
-        } else if (args.firstname === undefined || args.lastname === undefined || args.email === undefined || args.password === undefined || !regex.firstname.test(args.firstname) || !regex.lastname.test(args.lastname) || !regex.email.test(args.email) || !regex.password.test(args.password)) {
-            res.error(400, config.error.invalid_arguments);
-        } else {
-            new_user(args).then(function (arg) {
-                res.respond({user_id: arg.user[0], instruction: config.instruction.verify});
-                notify('email', stores.users.toArray([arg.user])[0], config.template.email.verify, (req.headers['x-forwarded-proto'] ? req.headers['x-forwarded-proto'] + ':' : req.parsed.protocol) + '//' + (req.headers['x-forwarded-protocol'] || req.parsed.host)).then(null, function (e) {
-                    log(e, 'error');
-                });
-            }, function (e) {
-                res.error(500, e);
-                log(e, 'error');
-            });
-        }
+    if (map) {
+        res.send({warnings: map.get('warnings'), weather: map.get('weather')});
     } else {
-        res.error(400, config.error.invalid_arguments);
+        res.error(404, new Error(404));
     }
+}
+
+function weatherCities (req, res) {
+    res.send(cities);
 }
 
 function soon (req, res) {
@@ -67,7 +70,7 @@ function soon (req, res) {
 }
 
 module.exports = {
-    conditions: conditions,
-    register: register,
-    soon: soon
+    soon: soon,
+    weather: weather,
+    weatherCities: weatherCities
 };
