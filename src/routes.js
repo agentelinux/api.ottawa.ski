@@ -7,9 +7,9 @@ const routes = {
     'get': {
         '/': ['weather', 'news', 'reviews'],
         '/news': util.soon,
-        '/news/:location': util.soon,
+        '/news/:city': util.soon,
         '/reviews': util.soon,
-        '/reviews/:location': util.soon,
+        '/reviews/:city': util.soon,
         '/weather': util.weatherCities,
         '/weather/:city': util.weather
     }
