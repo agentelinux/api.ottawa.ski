@@ -17,7 +17,7 @@
     "xframe": "SAMEORIGIN",
     "p3p": "",
     "hsts": {
-      "maxAge": 1800,
+      "maxAge": 180,
       "includeSubDomains": true,
       "preload": true
     },
