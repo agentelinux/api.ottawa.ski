@@ -27,30 +27,35 @@ function read (map, key, file) {
 }
 
 fs.readdir(fpCities, (e, items) => {
-    items.forEach(i => {
-        let fpPath = path.join(fpCities, i);
+    if (!e) {
+        console.error(e);
+        process.exit(1);
+    } else {
+        items.forEach(i => {
+            let fpPath = path.join(fpCities, i);
 
-        fs.stat(fpPath, (e, stat) => {
-            if (stat.isDirectory()) {
-                let files = [
-                    ['warnings', path.join(fpPath, 'warnings.json')],
-                    ['weather', path.join(fpPath, 'weather.json')]
-                ], map;
+            fs.stat(fpPath, (e, stat) => {
+                if (stat.isDirectory()) {
+                    let files = [
+                        ['warnings', path.join(fpPath, 'warnings.json')],
+                        ['weather', path.join(fpPath, 'weather.json')]
+                    ], map;
 
-                cities.push(i);
-                condition.set(i, new Map());
-                map = condition.get(i);
+                    cities.push(i);
+                    condition.set(i, new Map());
+                    map = condition.get(i);
 
-                files.forEach(file => {
-                    map.set(file[0], null);
-                    read(map.get(file[0]), file[0], file[1]);
-                    watch(file[1], () => {
+                    files.forEach(file => {
+                        map.set(file[0], null);
                         read(map.get(file[0]), file[0], file[1]);
+                        watch(file[1], () => {
+                            read(map.get(file[0]), file[0], file[1]);
+                        });
                     });
-                });
-            }
+                }
+            });
         });
-    });
+    }
 });
 
 function weather (req, res) {
