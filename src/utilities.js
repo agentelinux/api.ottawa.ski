@@ -1,8 +1,6 @@
 'use strict';
 
 const path = require('path'),
-    config = require(path.join(__dirname, 'config.js')),
-    regex = require(path.join(__dirname, 'regex.js')),
     fs = require('fs'),
     fpCities = path.resolve('/opt/data'),
     condition = new Map();
@@ -10,16 +8,20 @@ const path = require('path'),
 let cities = [];
 
 function read (map, key, file) {
-    fs.readFile(file, (e, arg) => {
-        let data;
+    fs.exists(file, exists => {
+        if (exists) {
+            fs.readFile(file, (e, arg) => {
+                let data;
 
-        if (!e) {
-            try {
-                data = JSON.parse(arg);
-                map.set(key, data);
-            } catch (e) {
-                console.error(e);
-            }
+                if (!e) {
+                    try {
+                        data = JSON.parse(arg);
+                        map.set(key, data);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                }
+            });
         }
     });
 }
@@ -36,8 +38,8 @@ fs.readDir(fpCities, (e, items) => {
                 ], map;
 
                 cities.push(i);
-                conditions.set(i, new Map());
-                map = conditions.get(i);
+                condition.set(i, new Map());
+                map = condition.get(i);
 
                 files.forEach(file => {
                     map.set(file[0], null);
