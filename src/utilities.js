@@ -61,7 +61,7 @@ fs.readdir(fpCities, (e, items) => {
 });
 
 function weather (req, res) {
-    const map = condition.get(req.param.location);
+    const map = condition.get(req.params.location);
 
     if (map) {
         res.send({warnings: map.get('warnings'), weather: map.get('weather')});
