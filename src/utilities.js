@@ -69,7 +69,7 @@ function weather (req, res) {
         map = condition.get(city);
 
     if (map) {
-        res.send({warnings: map.get('warnings'), weather: map.get('weather')});
+        res.send({id: city, warnings: map.get('warnings'), weather: map.get('weather')});
     } else {
         res.error(404, new Error(404));
     }
