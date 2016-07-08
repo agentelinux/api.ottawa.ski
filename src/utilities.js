@@ -84,7 +84,7 @@ function soon (req, res) {
         map = condition.has(city);
 
     if (map) {
-        res.send('Coming Soon');
+        res.send({id: city, message: 'Coming Soon'});
     } else {
         res.error(404, new Error(404));
     }
