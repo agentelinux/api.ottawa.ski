@@ -1,7 +1,7 @@
 {
   "compress": false,
   "headers": {
-    "cache-control": "private, max-age=1800"
+    "cache-control": "private, max-age=10"
   },
   "json": 0,
   "logging": {
