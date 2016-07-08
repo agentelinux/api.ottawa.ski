@@ -23,7 +23,7 @@
     },
     "xssProtection": true
   },
-  "maxBytes": 1048576,
+  "maxBytes": 10240,
   "port": 8000,
   "routes": {},
   "session" : {
