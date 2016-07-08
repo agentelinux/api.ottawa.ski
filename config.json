@@ -1,6 +1,9 @@
 {
   "compress": false,
   "headers": {
+    "access-control-allow-origin": "www.ottawa.ski",
+    "access-control-allow-headers": "allow,cache-control,content-encoding,content-type,link,strict-transport-security,transfer-encoding,x-frame-options,x-rate-limit,x-rate-remaining,x-rate-reset,x-response-time",
+    "access-control-max-age": 180,
     "cache-control": "private, max-age=10"
   },
   "json": 0,
