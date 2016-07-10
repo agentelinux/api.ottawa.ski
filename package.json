@@ -1,7 +1,7 @@
 {
   "name": "api.ottawa.ski",
   "version": "1.0.0",
-  "description": "API for ottawa.ski",
+  "description": "API for Ottawa.ski",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,21 +12,29 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/avoidwork/api.ottawa.ski.git"
+    "url": "git+https://github.com/OttawaSki/api.ottawa.ski.git"
   },
   "keywords": [
     "rest",
     "api",
-    "gateway"
+    "gateway",
+    "ottawa",
+    "canada",
+    "ski"
   ],
-  "author": "Jason Mulligan <jason@ottawa.ski>",
-  "license": "ISC",
+  "author": "Jason Mulligan <jason.mulligan@avoidwork.com>",
+  "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/avoidwork/api.ottawa.ski/issues"
+    "url": "https://github.com/OttawaSki/api.ottawa.ski/issues"
   },
-  "homepage": "https://github.com/avoidwork/api.ottawa.ski#readme",
+  "homepage": "https://github.com/OttawaSki/api.ottawa.ski#readme",
   "dependencies": {
-    "tenso": "~4.0.2",
+    "tenso": "~4.0.3",
     "tiny-merge": "^1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-cli": "~1.2.0",
+    "grunt-eslint": "~18.1.0"
   }
 }

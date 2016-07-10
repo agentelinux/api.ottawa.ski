@@ -3,8 +3,8 @@
   "headers": {
     "access-control-allow-origin": "https://www.ottawa.ski",
     "access-control-allow-headers": "allow,cache-control,content-encoding,content-type,link,strict-transport-security,transfer-encoding,x-frame-options,x-rate-limit,x-rate-remaining,x-rate-reset,x-response-time",
-    "access-control-max-age": 180,
-    "cache-control": "private, max-age=10"
+    "access-control-max-age": 60,
+    "cache-control": "private, max-age=1800"
   },
   "json": 0,
   "logging": {
@@ -14,7 +14,7 @@
   },
   "security": {
     "key": "x-csrf-token",
-    "secret": "halochocho",
+    "secret": "x",
     "csrf": true,
     "csp": null,
     "xframe": "SAMEORIGIN",
@@ -30,7 +30,7 @@
   "port": 8000,
   "routes": {},
   "session" : {
-    "secret": "halochocho",
+    "secret": "x",
     "store": "memory"
   },
   "rate": {
